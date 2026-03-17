@@ -12,21 +12,20 @@ export class CategoriaService{
     ){}
 
 
-    //PROCURAR TODOS
     async findAll(): Promise<Categoria[]>{
        
-        return this.categoriaRepository.find()
+        return this.categoriaRepository.find({
+         
+          })
     }
 
 
-    //PROCURAR POR ID
     async findById(id: number): Promise<Categoria>{
         
         const categoria = await this.categoriaRepository.findOne({
               where: {
                 id
             }, 
-        
         } )
 
         if(!categoria)
@@ -36,8 +35,8 @@ export class CategoriaService{
 }
 
 
-    //PROCURAR POR DESCRIÇÃO
-    async findAllByDescricao(descricao: string): Promise<Categoria[]>{
+
+       async findAllByDescricao(descricao: string): Promise<Categoria[]>{
     
     return this.categoriaRepository.find({
       where:{
@@ -47,14 +46,13 @@ export class CategoriaService{
   }
 
 
-  //CRIAR CATEGORIA
   async create(categoria: Categoria): Promise<Categoria>{
    
     return this.categoriaRepository.save(categoria);
   }
 
 
-  //ATUALIZAR CATEGORIA
+  
   async update(categoria: Categoria): Promise<Categoria>{
 
     if (!categoria.id || categoria.id <= 0)
@@ -66,8 +64,6 @@ export class CategoriaService{
     return this.categoriaRepository.save(categoria);
   }
 
-
-  //DELETAR CATEGORIA
   async delete(id: number): Promise<DeleteResult>{
     
     await this.findById(id);

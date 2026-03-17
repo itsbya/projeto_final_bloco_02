@@ -1,6 +1,6 @@
 import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 
 
@@ -24,4 +24,5 @@ export class Categoria{
    descricao: string;
 
    
+
 }
