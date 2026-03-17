@@ -15,6 +15,9 @@ export class CategoriaService{
     async findAll(): Promise<Categoria[]>{
        
         return this.categoriaRepository.find({
+           relations:{
+                produto:true
+            } 
          
           })
     }
@@ -26,6 +29,9 @@ export class CategoriaService{
               where: {
                 id
             }, 
+             relations:{
+                produto:true
+            } 
         } )
 
         if(!categoria)
@@ -42,6 +48,9 @@ export class CategoriaService{
       where:{
         descricao: ILike(`%${descricao}%`)
       }, 
+       relations:{
+                produto:true
+            } 
     })
   }
 
@@ -52,7 +61,7 @@ export class CategoriaService{
   }
 
 
-  
+
   async update(categoria: Categoria): Promise<Categoria>{
 
     if (!categoria.id || categoria.id <= 0)
