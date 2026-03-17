@@ -1,5 +1,5 @@
 import { Transform, TransformFnParams } from "class-transformer"
-import { IsDateString, IsEmail, IsNotEmpty, MinLength } from "class-validator"
+import { IsEmail, IsNotEmpty, MinLength } from "class-validator"
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity({name: "tb_usuarios"})
@@ -28,10 +28,5 @@ export class Usuario {
 
     @Column({length: 5000 }) 
     foto: string
-
-    @IsDateString()
-    @Column({type: "date"})
-    dataNascimento: Date
-    
 
 }
