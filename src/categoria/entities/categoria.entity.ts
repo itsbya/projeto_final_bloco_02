@@ -1,6 +1,7 @@
 import { Transform, TransformFnParams } from "class-transformer";
 import { IsNotEmpty } from "class-validator";
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Produto } from "../../produto/entities/produto.entity";
 
 
 
@@ -23,6 +24,11 @@ export class Categoria{
    @Column({length: 255, nullable: false})
    descricao: string;
 
+
+
+   //Relacionamento com Produto
+    @OneToMany(() => Produto,(produto)=> produto.categoria)
+    produto: Produto[];
    
 
 }
